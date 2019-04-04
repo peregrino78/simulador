@@ -1,0 +1,1 @@
+Note that you can reference partials within "App\Widgets" folder like this: @include("Widgets::somePartial") 
