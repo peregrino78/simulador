@@ -15,13 +15,15 @@ class Coefficient extends Model
      */
     protected $fillable = ['term', 'rate', 'factor', 'date', 'agreement_id', 'operation_type_id'];
 
+    protected $dates = ['date'];
+
     public function agreement()
     {
-        return $this->hasOne('App\Models\Agreement', 'agreement_id');
+        return $this->belongsTo('App\Models\Agreement', 'agreement_id');
     }
 
-    public function Operation()
+    public function operation()
     {
-        return $this->hasOne('App\Models\OperationType', 'operation_type_id');
+        return $this->belongsTo('App\Models\OperationType', 'operation_type_id');
     }
 }
