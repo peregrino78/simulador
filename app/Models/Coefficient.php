@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Coefficient extends Model
+{
+    protected $table = 'coefficients';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['term', 'rate', 'factor', 'date', 'agreement_id', 'operation_type_id'];
+
+    public function agreement()
+    {
+        return $this->hasOne('App\Models\Agreement', 'agreement_id');
+    }
+
+    public function Operation()
+    {
+        return $this->hasOne('App\Models\OperationType', 'operation_type_id');
+    }
+}
