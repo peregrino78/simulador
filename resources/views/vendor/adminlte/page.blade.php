@@ -125,12 +125,14 @@
 						</a>
 					</li>
 
-					<!-- MENU TAXAS DO BANCO -->
+					<!-- MENU COEFICIENTES -->
+					@permission('view.coefficients')
 					<li>
-						<a href="#">
-							<i class="mdi mdi-trending-up"></i><span> Taxas do Banco  </span>
+						<a href="{{ route('coeficientes.index') }}">
+							<i class="mdi mdi-trending-up"></i><span> Coeficientes </span>
 						</a>
 					</li>
+					@endpermission
 
 					<!-- MENU CONVÊNIO -->
 					@permission('view.agreements')
