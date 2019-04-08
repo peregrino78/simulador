@@ -38,13 +38,10 @@
                             <td> {{ $coefficient->agreement->name }} </td>
                             <td> {{ $coefficient->Operation->name }} </td>
                             <td> {{ $coefficient->term }} </td>
-                            <td> {{ $coefficient->rate }} </td>
+                            <td> {{ $coefficient->rate }}% </td>
                             <td> {{ $coefficient->factor }} </td>
                             <td> {{ $coefficient->date->format('d/m/Y') }} </td>
                             <td>
-                                @permission('view.agreements')
-                                    <a href="{{ route('coeficientes.show', $coefficient->id) }}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
-                                @endpermission
                                 @permission('edit.agreements')
                                     <a href="{{ route('coeficientes.edit', $coefficient->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                 @endpermission

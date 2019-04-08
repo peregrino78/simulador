@@ -21,19 +21,6 @@ class CoefficientsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $coefficient = Coefficient::findOrFail($id);
-
-        return view('dashboard.coefficients.show', compact('coefficient'));
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
