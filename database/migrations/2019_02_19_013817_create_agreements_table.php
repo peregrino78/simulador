@@ -21,7 +21,7 @@ class CreateAgreementsTable extends Migration
 
         Schema::create('particularities', function (Blueprint $table) {
             $table->increments('id');
-            $table->longText('descricao');
+            $table->longText('description');
             $table->integer('age_limit');
             $table->integer('parcel_limit');
             $table->integer('agreement_id')->unsigned()->default(0);
