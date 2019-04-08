@@ -16,7 +16,7 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         $permissions = [
-            'agreements',
+            'agreements', 'coefficients',
            'Aplicação', 'Usuários', 'Permissões' // Menu Configurações
         ];
 
