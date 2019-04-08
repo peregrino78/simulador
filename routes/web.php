@@ -21,19 +21,19 @@ Route::middleware('auth')->group(function() {
 			Route::get('/dashboard', 'AdminController@index')->name('admin.dashboard');
 			
 			// Simulação
-			Route::resource('/simulacao', 'SimulationController')->middleware('level:4');
+			Route::resource('simulacao', 'SimulationController')->middleware('level:4');
 
 			// Histórico de Simulações
-			Route::get('/simulacao/historico', 'SimulationHistoryController@historico')->name('simulacao.historico')->middleware('level:4');
+			Route::get('simulacao/historico', 'SimulationHistoryController@historico')->name('simulacao.historico')->middleware('level:4');
 
 			// Convênio
-			Route::resource('/convenio', 'AgreementsController')->middleware('level:4');
+			Route::resource('convenio', 'AgreementsController')->middleware('level:4');
 			
 			// Taxas do Banco
-			Route::resource('/taxas-banco', 'CoefficientsController')->middleware('level:4');
+			Route::resource('taxas-banco', 'CoefficientsController')->middleware('level:4');
 
 			// Estatísticas
-			Route::resource('/estatisticas', 'StatisticsController')->middleware('level:4');
+			Route::resource('estatisticas', 'StatisticsController')->middleware('level:4');
 			
 			
 			
