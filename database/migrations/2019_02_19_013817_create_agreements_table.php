@@ -19,7 +19,7 @@ class CreateAgreementsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('particularities', function (Blueprint $table) {
+        Schema::create('agreements_particularities', function (Blueprint $table) {
             $table->increments('id');
             $table->longText('description');
             $table->integer('age_limit');

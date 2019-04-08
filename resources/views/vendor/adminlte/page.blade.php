@@ -133,11 +133,13 @@
 					</li>
 
 					<!-- MENU CONVÊNIO -->
+					@permission('view.agreements')
 					<li>
-						<a href="#">
+						<a href="{{ route('convenio.index') }}">
 							<i class="mdi mdi-file-document-box-multiple-outline"></i><span> Convênios </span>
 						</a>
 					</li>
+					@endpermission
 					
 					<!-- MENU ESTATÍSTICAS -->
 					<li>
@@ -263,7 +265,15 @@
 					focus: false
 				});
 			});
-	</script>
+		</script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.summernoteDisable').summernote('disable', {
+					shortcuts: false
+				});
+			});
+		</script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/js/standalone/selectize.js"></script>
