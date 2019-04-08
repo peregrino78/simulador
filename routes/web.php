@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function() {
 			// Convênio
 			Route::resource('convenio', 'AgreementsController')->middleware('level:4');
 			
-			// Taxas do Banco
+			// Taxas do Banco / Coeficientes
 			Route::resource('coeficientes', 'CoefficientsController')->middleware('level:4');
 
 			// Estatísticas
