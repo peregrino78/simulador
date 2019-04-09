@@ -150,4 +150,28 @@ class CoefficientsController extends Controller
             ]);
         }
     }
+
+    /**
+     * Show the form for deleting all resource selecteds.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteAll(Request $request)
+    {
+        try {
+            $ids = $request->ids;
+            Coefficient::whereIn('id', explode(",",$ids))->delete();
+
+            return response()->json([
+                'code' => 200,
+                'type' => 'success',
+                'message' => 'Coeficientes removidos com sucesso!'
+            ]);
+        } catch(Exception $e) {
+            return response()->json([
+                'code' => 501,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
 }
