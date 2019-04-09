@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\Models\Client;
+use App\Models\Network;
+use App\Models\Payment;
+use App\Models\Enrollment;
+use App\Models\Coefficient;
 use Illuminate\Http\Request;
 use App\Models\Formulario\ContactsForm;
 use App\Models\Formulario\NewslettersForm;
-use App\Models\Enrollment;
-use App\Models\Payment;
-use App\Models\Network;
-use DB;
 
 class AdminController extends Controller
 {
@@ -18,8 +20,30 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {       
-        return view('dashboard.index');
+    {     
+    /*
+
+        if(Auth::user()->id_perfil_usuario == 1)
+        {
+            // Se usuário for Administrador, busca quantidade de simulações geral
+            $simulacoes = ResultadoSimulacao::get();
+            $simulacoes = count($simulacoes);
+            $simulacoesAprovadas = ResultadoSimulacao::where('resultado','=','aprovada')->count();
+            $simulacoesReprovadas = ResultadoSimulacao::where('resultado','=','reprovada')->count();
+        }
+        else
+        {
+            $idUser = Auth::user()->id;
+            // Se não busca quantidade de simulações por usuário
+            $simulacoes = ResultadoSimulacao::where('id_usuario', $idUser)->count();
+            $simulacoesAprovadas = ResultadoSimulacao::where('resultado','=','aprovada')->where('id_usuario', $idUser)->count();
+            $simulacoesReprovadas = ResultadoSimulacao::where('resultado','=','reprovada')->where('id_usuario', $idUser)->count();
+        }
+    */
+        $clients = Client::count();
+        $coefficients = Coefficient::orderBy('updated_at', 'DESC')->first();
+
+        return view('dashboard.index', compact('clients', 'coefficients'));
     }
 
     /**
