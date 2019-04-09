@@ -124,4 +124,30 @@ class CoefficientsController extends Controller
 
         return redirect()->route('coeficientes.index');
     }
+
+    /**
+     * Show the form for deleting the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        try {
+            $coefficient = Coefficient::findOrFail($id);
+
+            $coefficient->delete();
+
+            return response()->json([
+                'code' => 200,
+                'type' => 'success',
+                'message' => 'Coeficiente removido com sucesso!'
+            ]);
+        } catch(Exception $e) {
+            return response()->json([
+                'code' => 501,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
 }
