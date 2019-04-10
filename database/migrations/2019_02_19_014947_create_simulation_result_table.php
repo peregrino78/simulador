@@ -22,8 +22,8 @@ class CreateSimulationResultTable extends Migration
             $table->string('santander_rate'); // Taxa Santander
             $table->integer('id_simulation_data')->unsigned()->default(0);
             $table->foreign('id_simulation_data')->references('id')->on('simulation_data')->onDelete('cascade');
-            $table->integer('id_users')->unsigned()->default(0);
-            $table->foreign('id_users')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('id_user')->unsigned()->default(0);
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
