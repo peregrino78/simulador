@@ -112,11 +112,13 @@
 					</li>
 
 					<!-- MENU SIMULAÇÃO -->
+					@permission('view.simulations')
 					<li>
-						<a href="#">
+						<a href="{{ route('dados-cliente.create') }}">
 							<i class="mdi mdi-cached"></i><span> Realizar Simulação </span>
 						</a>
 					</li>
+					@endpermission
 
 					<!-- MENU HISTÓRICO SIMULAÇÕES -->
 					<li>
@@ -125,12 +127,14 @@
 						</a>
 					</li>
 
-					<!-- MENU TAXAS DO BANCO -->
+					<!-- MENU COEFICIENTES -->
+					@permission('view.coefficients')
 					<li>
-						<a href="#">
-							<i class="mdi mdi-trending-up"></i><span> Taxas do Banco  </span>
+						<a href="{{ route('coeficientes.index') }}">
+							<i class="mdi mdi-trending-up"></i><span> Coeficientes </span>
 						</a>
 					</li>
+					@endpermission
 
 					<!-- MENU CONVÊNIO -->
 					@permission('view.agreements')
@@ -282,6 +286,7 @@
 		$('.money').mask('000.000.000.000.000,00', {reverse: true, placeholder: "0,00"});
 		$('.date').mask('00/00/0000');
 		$('.cep').mask('00000-000');
+		$('.cpf').mask('000.000.000-00');
 
 		$('.telefone').mask('(00) 0000-0000');
 		$('.celular').mask('(00) 00000-0000');

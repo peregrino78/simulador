@@ -19,8 +19,8 @@ class CreateCoefficientsTable extends Migration
             $table->string('rate'); // Taxa
             $table->string('factor'); // Fator
             $table->date('date');
-            $table->integer('agreements_id')->unsigned()->default(0);
-            $table->foreign('agreements_id')->references('id')->on('agreements')->onDelete('cascade');
+            $table->integer('agreement_id')->unsigned()->default(0);
+            $table->foreign('agreement_id')->references('id')->on('agreements')->onDelete('cascade');
             $table->integer('operation_type_id')->unsigned()->default(0);
             $table->foreign('operation_type_id')->references('id')->on('operation_type')->onDelete('cascade');
             $table->timestamps();

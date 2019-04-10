@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSimulationDateTable extends Migration
+class CreateSimulationDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateSimulationDateTable extends Migration
      */
     public function up()
     {
-        Schema::create('simulation_date', function (Blueprint $table) {
+        Schema::create('simulation_data', function (Blueprint $table) {
             $table->increments('id');
             $table->string('balance_due'); // Saldo Devedor
-            $table->string('contract_agreement'); // Prazo Contrato
+            $table->string('contract_term'); // Prazo Contrato
             $table->string('paid_parcels'); // Parcelas Pagas
             $table->string('open_parcels'); // Parcelas Abertas
             $table->string('current_parcel_value'); // Valor Parcela Atual
@@ -39,6 +39,6 @@ class CreateSimulationDateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('simulation_date');
+        Schema::dropIfExists('simulation_data');
     }
 }
