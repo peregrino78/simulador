@@ -9,6 +9,7 @@ use App\Models\Payment;
 use App\Models\Enrollment;
 use App\Models\Coefficient;
 use Illuminate\Http\Request;
+use App\Models\Simulation\Result;
 use App\Models\Formulario\ContactsForm;
 use App\Models\Formulario\NewslettersForm;
 
@@ -43,7 +44,11 @@ class AdminController extends Controller
         $clients = Client::count();
         $coefficients = Coefficient::orderBy('updated_at', 'DESC')->first();
 
-        return view('dashboard.index', compact('clients', 'coefficients'));
+        $simulations = Result::count();
+        $simulationsApproved = Result::where('result','=','aprovada')->count();
+        $simulationsDisapproved = Result::where('result','=','reprovada')->count();
+
+        return view('dashboard.index', compact('clients', 'coefficients', 'simulations', 'simulationsApproved', 'simulationsDisapproved'));
     }
 
     /**
