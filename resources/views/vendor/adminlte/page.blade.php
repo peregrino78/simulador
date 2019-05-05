@@ -145,12 +145,23 @@
 					</li>
 					@endpermission
 					
+					<!-- MENU CLIENTES -->
+					@permission('view.clients')
+					<li>
+						<a href="{{ route('clientes.index') }}">
+							<i class="mdi mdi-account-multiple"></i><span> Clientes </span>
+						</a>
+					</li>
+					@endpermission
+
 					<!-- MENU ESTATÍSTICAS -->
+					@permission('view.statistics')
 					<li>
 						<a href="#">
 							<i class="mdi mdi-chart-bar"></i><span> Estatísticas </span>
 						</a>
 					</li>
+					@endpermission
 
 					<!-- MENU CONFIGURAÇÕES -->
 					@permission('view.configuracoes')

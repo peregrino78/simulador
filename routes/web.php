@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function() {
 			// Simulação
 			Route::prefix('/simulacao')->group(function ()
 			{
-				Route::resource('dados-cliente', 'ClientController')->middleware('level:4');
+				Route::resource('dados-cliente', 'ClientsController')->middleware('level:4');
 				Route::get('simulacao/{id}', 'SimulationController@create')->name('simulation_create')->middleware('level:4');
 				Route::get('resultado', 'SimulationController@result')->name('simulation_result')->middleware('level:4');
 				Route::resource('simulacao', 'SimulationController')->middleware('level:4');
@@ -39,6 +39,9 @@ Route::middleware('auth')->group(function() {
 			// Taxas do Banco / Coeficientes
 			Route::resource('coeficientes', 'CoefficientsController')->middleware('level:4');
 			Route::delete('coeficientes/delete', 'CoefficientsController@deleteAll')->middleware('level:4');
+
+			// Clientes
+			Route::resource('clientes', 'ClientsController')->middleware('level:4');
 
 			// Estatísticas
 			Route::resource('estatisticas', 'StatisticsController')->middleware('level:4');
