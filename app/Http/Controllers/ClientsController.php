@@ -5,8 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class ClientsController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $clients = Client::orderBy('name')->paginate();
+        return view('dashboard.clients.index', compact('clients'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -14,7 +25,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('dashboard.simulations.client.create');
+        return view('dashboard.clients.create');
     }
 
     /**
