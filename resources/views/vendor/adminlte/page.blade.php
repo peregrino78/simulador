@@ -114,9 +114,40 @@
 					<!-- MENU SIMULAÇÃO -->
 					@permission('view.simulations')
 					<li>
-						<a href="{{ route('dados-cliente.create') }}">
-							<i class="mdi mdi-cached"></i><span> Realizar Simulação </span>
-						</a>
+						<a href="javascript: void(0);"><i class="mdi mdi-cached"></i><span> Simulações </span> <span class="menu-arrow"></span></a>
+						<ul class="nav-second-level" aria-expanded="false">
+
+							@permission('view.simulations')
+							<li>
+								<a href="{{ route('dados-cliente.create') }}">
+									<i class="mdi mdi-arrow-right-thick"></i><span> Contrato Novo </span>
+								</a>
+							</li>
+							@endpermission
+
+							@permission('view.simulations')
+							<li>
+								<a href="{{ route('dados-cliente.create') }}">
+									<i class="mdi mdi-arrow-right-thick"></i><span> Portabilidade </span>
+								</a>
+							</li>
+							@endpermission
+							@permission('view.simulations')
+							<li>
+								<a href="{{ route('dados-cliente.create') }}">
+									<i class="mdi mdi-arrow-right-thick"></i><span> Refin </span>
+								</a>
+							</li>
+							@endpermission
+							@permission('view.simulations')
+							<li>
+								<a href="{{ route('dados-cliente.create') }}">
+									<i class="mdi mdi-arrow-right-thick"></i><span> Refin Portabilidade </span>
+								</a>
+							</li>
+							@endpermission
+
+						</ul>
 					</li>
 					@endpermission
 
