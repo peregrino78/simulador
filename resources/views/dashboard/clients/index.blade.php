@@ -15,6 +15,8 @@
                             <th>Nome</th>
                             <th>CPF</th>
                             <th>Data Nascimento</th>
+                            <th>Estado</th>
+                            <th>Cidade</th>
                         </tr>
                         </thead>
 
@@ -24,6 +26,8 @@
                                     <td> {{ $client->name }} </td>
                                     <td> {{ $client->cpf }} </td>
                                     <td> {{ $client->birthday->format('d/m/Y') }} </td>
+                                    <td> {{ $client->state->initials }} </td>
+                                    <td> {{ $client->city->name }} </td>
                                 </tr>
                             @endforeach
                         </tbody>

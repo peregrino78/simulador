@@ -65,3 +65,8 @@ Route::middleware('auth')->group(function() {
 
 	});
 });
+
+// Rota para buscar Cidade
+Route::get('get-cities/{id?}', function ($id = null) {
+    return \App\Models\City::where('state_id', $id)->get();
+})->name('get-cities');

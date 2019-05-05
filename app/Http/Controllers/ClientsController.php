@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\State;
 use App\Models\Client;
 use Illuminate\Http\Request;
 
@@ -25,7 +27,10 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        return view('dashboard.clients.create');
+        $states = State::selectRaw("CONCAT (initials, ' - ', name) as names, id")->pluck('names', 'id');
+        $cities = City::pluck('name', 'id');
+
+        return view('dashboard.clients.create', compact('states', 'cities'));
     }
 
     /**

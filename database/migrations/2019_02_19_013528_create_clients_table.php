@@ -18,6 +18,13 @@ class CreateClientsTable extends Migration
             $table->string('name');
             $table->string('cpf')->unique();
             $table->date('birthday');
+
+            $table->integer('state_id')->unsigned()->default(0); //Estado
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+
+            $table->integer('city_id')->unsigned()->default(0); //Cidade
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
