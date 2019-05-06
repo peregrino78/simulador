@@ -15,7 +15,19 @@ class OperationTypesTableSeeder extends Seeder
         $types = [
 			[
 				'code' => '001',
+				'name' => 'Contrato Novo',
+            ],
+            [
+				'code' => '002',
 				'name' => 'Portabilidade',
+            ],
+            [
+				'code' => '003',
+				'name' => 'Refin',
+            ],
+            [
+				'code' => '004',
+				'name' => 'Refin da Portabilidade',
 			],
         ];
 
