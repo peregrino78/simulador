@@ -23,15 +23,22 @@ Route::middleware('auth')->group(function() {
 			// Simulação
 			Route::prefix('/simulacao')->group(function ()
 			{
+				// Forms Dados do Cliente
+				Route::get('dados-cliente/op/{op}', 'ClientsController@create')->name('client_create')->middleware('level:4');
 				Route::resource('dados-cliente', 'ClientsController')->middleware('level:4');
-				Route::get('simulacao/{id}', 'SimulationController@create')->name('simulation_create')->middleware('level:4');
+
+				// Forms Simulação por Operação
+				Route::get('contrato-novo/cliente/{id}', 'OperationController@contratoNovoCreate')->name('simulacao_contrato_novo')->middleware('level:4');
+				Route::get('portabilidade/cliente/{id}', 'OperationController@portabilidadeCreate')->name('simulacao_portabilidade')->middleware('level:4');
+				Route::get('refin/cliente/{id}', 'OperationController@refinCreate')->name('simulacao_refin')->middleware('level:4');
+				Route::get('refin-portabilidade/cliente/{id}', 'OperationController@refinPortabilidadecreate')->name('simulacao_refin_portabilide')->middleware('level:4');
+				
 				Route::get('resultado', 'SimulationController@result')->name('simulation_result')->middleware('level:4');
 				Route::resource('simulacao', 'SimulationController')->middleware('level:4');
-				
-			});
 
-			// Histórico de Simulações
-			Route::get('simulacao/historico', 'SimulationHistoryController@historico')->name('simulacao.historico')->middleware('level:4');
+				// Histórico de Simulações
+				Route::get('simulacao/historico', 'SimulationHistoryController@historico')->name('simulacao.historico')->middleware('level:4');
+			});
 
 			// Convênio
 			Route::resource('convenio', 'AgreementsController')->middleware('level:4');
@@ -45,8 +52,7 @@ Route::middleware('auth')->group(function() {
 
 			// Estatísticas
 			Route::resource('estatisticas', 'StatisticsController')->middleware('level:4');
-			
-			
+		
 			
 			// Configurações da Aplicação
 			Route::resource('users', 'UsersController')->middleware('level:4');

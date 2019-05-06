@@ -18,6 +18,7 @@
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
+                                            <input type="hidden" name="operation" value="{{$request->op}}" hidden>
                                             <div class="col-md-6">
                                                 <div class="form-group {{ $errors->has('cpf') ? ' has-error' : '' }}">
                                                     <label class="col-form-label" for="cpf">CPF</label>

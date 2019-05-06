@@ -119,7 +119,7 @@
 
 							@permission('view.simulations')
 							<li>
-								<a href="{{ route('dados-cliente.create') }}">
+								<a href="{{ route('client_create', 1) }}">
 									<i class="mdi mdi-arrow-right-thick"></i><span> Contrato Novo </span>
 								</a>
 							</li>
@@ -127,21 +127,21 @@
 
 							@permission('view.simulations')
 							<li>
-								<a href="{{ route('dados-cliente.create') }}">
+								<a href="{{ route('client_create', 2) }}">
 									<i class="mdi mdi-arrow-right-thick"></i><span> Portabilidade </span>
 								</a>
 							</li>
 							@endpermission
 							@permission('view.simulations')
 							<li>
-								<a href="{{ route('dados-cliente.create') }}">
+								<a href="{{ route('client_create', 3) }}">
 									<i class="mdi mdi-arrow-right-thick"></i><span> Refin </span>
 								</a>
 							</li>
 							@endpermission
 							@permission('view.simulations')
 							<li>
-								<a href="{{ route('dados-cliente.create') }}">
+								<a href="{{ route('client_create', 4) }}">
 									<i class="mdi mdi-arrow-right-thick"></i><span> Refin Portabilidade </span>
 								</a>
 							</li>

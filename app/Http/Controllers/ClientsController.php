@@ -6,9 +6,17 @@ use App\Models\City;
 use App\Models\State;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use App\Http\Controllers\OperationController;
 
 class ClientsController extends Controller
 {
+    private $operation;
+
+    public function __construct()
+    {
+        $this->operation = new OperationController();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,12 +33,12 @@ class ClientsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $states = State::selectRaw("CONCAT (initials, ' - ', name) as names, id")->pluck('names', 'id');
         $cities = City::pluck('name', 'id');
 
-        return view('dashboard.clients.create', compact('states', 'cities'));
+        return view('dashboard.clients.create', compact('states', 'cities', 'request'));
     }
 
     /**
@@ -65,8 +73,7 @@ class ClientsController extends Controller
         
         if($client)
         {
-            return redirect()->route('simulation_create', $client->id);
+            $this->operation->redirectOperation($request->operation, $client->id);
         }
-        //flash('Coeficiente adicionado com sucesso.')->success()->important();
     }
 }
