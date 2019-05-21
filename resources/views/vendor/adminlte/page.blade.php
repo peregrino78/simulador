@@ -135,18 +135,10 @@
 							@permission('view.simulations')
 							<li>
 								<a href="{{ route('client_create', 3) }}">
-									<i class="mdi mdi-arrow-right-thick"></i><span> Refin </span>
+									<i class="mdi mdi-arrow-right-thick"></i><span> Refin Portabilidade</span>
 								</a>
 							</li>
 							@endpermission
-							@permission('view.simulations')
-							<li>
-								<a href="{{ route('client_create', 4) }}">
-									<i class="mdi mdi-arrow-right-thick"></i><span> Refin Portabilidade </span>
-								</a>
-							</li>
-							@endpermission
-
 						</ul>
 					</li>
 					@endpermission
