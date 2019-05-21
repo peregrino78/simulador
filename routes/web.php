@@ -28,13 +28,16 @@ Route::middleware('auth')->group(function() {
 				Route::resource('dados-cliente', 'ClientsController')->middleware('level:4');
 
 				// Forms Simulação por Operação
-				Route::get('contrato-novo/cliente/{id}', 'OperationController@contratoNovoCreate')->name('simulacao_contrato_novo')->middleware('level:4');
-				Route::get('portabilidade/cliente/{id}', 'OperationController@portabilidadeCreate')->name('simulacao_portabilidade')->middleware('level:4');
-				Route::get('refin/cliente/{id}', 'OperationController@refinCreate')->name('simulacao_refin')->middleware('level:4');
-				Route::get('refin-portabilidade/cliente/{id}', 'OperationController@refinPortabilidadecreate')->name('simulacao_refin_portabilide')->middleware('level:4');
+				Route::get('contrato-novo/cliente/{id}', 'NewContractController@create')->name('simulacao_contrato_novo')->middleware('level:4');
+				Route::get('portabilidade/cliente/{id}', 'PortabilityController@create')->name('simulacao_portabilidade')->middleware('level:4');
+				Route::get('refin-portabilidade/cliente/{id}', 'RefinancingPortabilitController@create')->name('simulacao_refin_portabilidade')->middleware('level:4');
+				
+				Route::resource('contrato-novo', 'NewContractController')->middleware('level:4');
+				Route::resource('portabilidade', 'PortabilityController')->middleware('level:4');
+				Route::resource('refin-portabilidade', 'RefinancingController')->middleware('level:4');
+
 				
 				Route::get('resultado', 'SimulationController@result')->name('simulation_result')->middleware('level:4');
-				Route::resource('simulacao', 'SimulationController')->middleware('level:4');
 
 				// Histórico de Simulações
 				Route::get('simulacao/historico', 'SimulationHistoryController@historico')->name('simulacao.historico')->middleware('level:4');
