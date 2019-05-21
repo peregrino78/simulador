@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agreement;
 use Illuminate\Http\Request;
+use App\Models\OperationType;
 
 class PortabilityController extends Controller
 {
@@ -11,8 +13,12 @@ class PortabilityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('dashboard.operations.portabilidade.create');
+        $client_id = $id;
+        $agreements = Agreement::pluck('name', 'id');
+        $operations = OperationType::pluck('name', 'id');
+        
+        return view('dashboard.operations.portabilidade.create', compact('agreements', 'operations', 'client_id'));
     }
 }
