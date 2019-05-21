@@ -73,7 +73,7 @@ class ClientsController extends Controller
         
         if($client)
         {
-            $this->operation->redirectOperation($request->operation, $client->id);
+            return $this->operation->redirectOperation($request->operation, $client->id);
         }
     }
 }

@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function() {
 			Route::prefix('/simulacao')->group(function ()
 			{
 				// Forms Dados do Cliente
-				Route::get('dados-cliente/op/{op}', 'ClientsController@create')->name('client_create')->middleware('level:4');
+				Route::get('dados-cliente/op/{op?}', 'ClientsController@create')->name('client_create')->middleware('level:4');
 				Route::resource('dados-cliente', 'ClientsController')->middleware('level:4');
 
 				// Forms Simulação por Operação
