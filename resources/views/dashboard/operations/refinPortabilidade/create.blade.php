@@ -1,10 +1,10 @@
 @extends('dashboard.templates.create')
 
-@section('title', 'Simulação - Refin')
+@section('title', 'Simulação - Refinanciamento da Portabilidade')
 
 @section('content')
 
-{!! Form::open(['route' => 'simulacao.store', 'method' => 'post', 'class'=>'form-horizontal', 'role'=>'form', 'files' => true]) !!}
+{!! Form::open(['route' => 'refin-portabilidade.store', 'method' => 'post', 'class'=>'form-horizontal', 'role'=>'form', 'files' => true]) !!}
 <div class="row">
     <div class="col-sm-12">
         <div class="card-box">
