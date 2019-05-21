@@ -20,7 +20,7 @@ class RefinancingPortabilitController extends Controller
         $agreements = Agreement::pluck('name', 'id');
         $operations = OperationType::pluck('name', 'id');
         
-        return view('dashboard.operations.refin.create', compact('agreements', 'operations', 'client_id'));
+        return view('dashboard.operations.refin-portabilidade.create', compact('agreements', 'operations', 'client_id'));
     }
 
      /**
