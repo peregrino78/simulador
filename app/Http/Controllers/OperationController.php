@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agreement;
 use Illuminate\Http\Request;
-use App\Models\OperationType;
 
 class OperationController extends Controller
 {
@@ -20,30 +18,11 @@ class OperationController extends Controller
         {
             $routName = 'simulacao_portabilidade';
         }
-        if($operation == 3)
+        if($operation == 4)
         {
-            $routName = 'simulacao_refin';
+            $routName = 'simulacao_refin_portabilidade';
         }
         
         return redirect()->route($routName, ['id' => $client]);
-    }
-    
-    public function contratoNovoCreate()
-    {
-        return view('dashboard.operations.contrato-novo');
-    }
-
-    public function portabilidadeCreate()
-    {
-        return view('dashboard.operations.portabilidade');
-    }
-
-    public function refinCreate($id)
-    {
-        $client_id = $id;
-        $agreements = Agreement::pluck('name', 'id');
-        $operations = OperationType::pluck('name', 'id');
-        
-        return view('dashboard.operations.refin', compact('agreements', 'operations', 'client_id'));
-    }
+    }    
 }
