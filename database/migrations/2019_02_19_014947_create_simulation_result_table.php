@@ -15,11 +15,13 @@ class CreateSimulationResultTable extends Migration
     {
         Schema::create('simulation_result', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('balance'); // Saldo
-            $table->string('parcel'); // Parcela
-            $table->string('change'); // Troco
-            $table->string('result'); // Resultado
-            $table->string('santander_rate'); // Taxa Santander
+            $table->string('balance');          // Saldo
+            $table->string('parcel');           // Parcela
+            $table->string('parcel_value');     // Valor da Parcela
+            $table->string('value');            // Valor do Emprestimo
+            $table->string('change');           // Troco
+            $table->string('result');           // Resultado
+            $table->string('santander_rate');   // Taxa Santander
             $table->integer('id_simulation_data')->unsigned()->default(0);
             $table->foreign('id_simulation_data')->references('id')->on('simulation_data')->onDelete('cascade');
             $table->integer('id_user')->unsigned()->default(0);

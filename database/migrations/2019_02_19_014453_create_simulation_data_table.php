@@ -14,14 +14,15 @@ class CreateSimulationDataTable extends Migration
     public function up()
     {
         Schema::create('simulation_data', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('balance_due'); // Saldo Devedor
-            $table->string('contract_term'); // Prazo Contrato
-            $table->string('paid_parcels'); // Parcelas Pagas
-            $table->string('open_parcels'); // Parcelas Abertas
+            $table->increments('id');        
+            $table->string('parcels_quantity');     // Quantidade de Parcelas
+            $table->string('value_desired');        // Valor Desejado
+            $table->string('balance_due');          // Saldo Devedor
+            $table->string('contract_term');        // Prazo Contrato
+            $table->string('paid_parcels');         // Parcelas Pagas
+            $table->string('open_parcels');         // Parcelas Abertas
             $table->string('current_parcel_value'); // Valor Parcela Atual
-            $table->string('desired_parcel'); // Parcela Desejada
-            $table->string('date');
+            $table->string('desired_parcel');       // Parcela Desejada
             $table->integer('client_id')->unsigned()->default(0);
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->integer('operation_type_id')->unsigned()->default(0);
