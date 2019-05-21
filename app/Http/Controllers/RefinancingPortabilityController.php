@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\OperationType;
 use App\Models\Simulation\Data;
 
-class RefinancingPortabilitController extends Controller
+class RefinancingPortabilityController extends Controller
 {
     /**
      * Show the form for creating a new resource.
