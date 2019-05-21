@@ -23,7 +23,11 @@ class OperationTypesTableSeeder extends Seeder
          	],
          	[
             	'code' => '003',
-            	'name' => 'Refin',
+            	'name' => 'Refinanciamento',
+			 ],
+			 [
+            	'code' => '004',
+            	'name' => 'Refin da Portabilidade',
          	],
       	];
 
