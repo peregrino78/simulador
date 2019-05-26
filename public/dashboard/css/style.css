@@ -3297,3 +3297,7 @@ h3.timeline-title {
     height: 26px;
   }
 }
+
+select[readonly] {
+  pointer-events: none;
+  }
