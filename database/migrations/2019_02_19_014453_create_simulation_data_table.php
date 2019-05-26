@@ -15,14 +15,14 @@ class CreateSimulationDataTable extends Migration
     {
         Schema::create('simulation_data', function (Blueprint $table) {
             $table->increments('id');        
-            $table->string('parcels_quantity');     // Quantidade de Parcelas
-            $table->string('value_desired');        // Valor Desejado
-            $table->string('balance_due');          // Saldo Devedor
-            $table->string('contract_term');        // Prazo Contrato
-            $table->string('paid_parcels');         // Parcelas Pagas
-            $table->string('open_parcels');         // Parcelas Abertas
-            $table->string('current_parcel_value'); // Valor Parcela Atual
-            $table->string('desired_parcel');       // Parcela Desejada
+            $table->string('parcels_quantity')->nullable()->default(NULL);     // Quantidade de Parcelas
+            $table->string('value_desired')->nullable()->default(NULL);        // Valor Desejado
+            $table->string('balance_due')->nullable()->default(NULL);          // Saldo Devedor
+            $table->string('contract_term')->nullable()->default(NULL);        // Prazo Contrato
+            $table->string('paid_parcels')->nullable()->default(NULL);         // Parcelas Pagas
+            $table->string('open_parcels')->nullable()->default(NULL);         // Parcelas Abertas
+            $table->string('current_parcel_value')->nullable()->default(NULL); // Valor Parcela Atual
+            $table->string('desired_parcel')->nullable()->default(NULL);       // Parcela Desejada
             $table->integer('client_id')->unsigned()->default(0);
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->integer('operation_type_id')->unsigned()->default(0);
