@@ -16,6 +16,8 @@ Route::middleware('auth')->group(function() {
 
 		Route::middleware('lock')->group(function() {
 
+			Route::get('coeficiente', 'CoefficientsController@getByDate')->name('teste')->middleware('level:4');
+
 			// Dashboard
 			Route::get('/', 'AdminController@index');
 			Route::get('/dashboard', 'AdminController@index')->name('admin.dashboard');
@@ -29,13 +31,14 @@ Route::middleware('auth')->group(function() {
 
 				// Forms Simulação por Operação
 				Route::get('contrato-novo/cliente/{id}', 'NewContractController@create')->name('simulacao_contrato_novo')->middleware('level:4');
-				Route::get('portabilidade/cliente/{id}', 'PortabilityController@create')->name('simulacao_portabilidade')->middleware('level:4');
-				Route::get('refin-portabilidade/cliente/{id}', 'RefinancingPortabilitController@create')->name('simulacao_refin_portabilidade')->middleware('level:4');
-				
+				Route::get('portabilidade/cliente/{id?}', 'PortabilityController@create')->name('simulacao_portabilidade')->middleware('level:4');
+				Route::get('refin-portabilidade/cliente/{id}', 'RefinancingPortabilityController@create')->name('simulacao_refin_portabilidade')->middleware('level:4');
+				Route::post('check-client', 'ClientsController@check')->name('check-client');
+				Route::get('simulacao-tipo/{operation?}/{id?}', 'ClientsController@redirect')->name('simulacao_tipo');
+
 				Route::resource('contrato-novo', 'NewContractController')->middleware('level:4');
 				Route::resource('portabilidade', 'PortabilityController')->middleware('level:4');
-				Route::resource('refin-portabilidade', 'RefinancingController')->middleware('level:4');
-
+				Route::resource('refin-portabilidade', 'RefinancingPortabilityController')->middleware('level:4');
 				
 				Route::get('resultado', 'SimulationController@result')->name('simulation_result')->middleware('level:4');
 
