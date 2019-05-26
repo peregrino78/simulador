@@ -18,6 +18,7 @@
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
+                                            <input type="hidden" name="operation" value="{{$request->op}}" hidden>
                                             <div class="col-md-6">
                                                 <div class="form-group {{ $errors->has('cpf') ? ' has-error' : '' }}">
                                                     <label class="col-form-label" for="cpf">CPF</label>
@@ -130,6 +131,43 @@
 					});
 				});
 			});
+        })();
+    </script>
+
+    <script>
+		(function () {
+            $("input[name=cpf]").on('keyup', function() {
+                var ele = $(this);
+                if (ele.val().length >= 14 ) {
+                    $.ajax({
+                        url: '{{ route("check-client") }}',
+                        method: 'POST',
+                        data: {
+                            cpf: ele.val()
+                        },
+                        dataType: 'json',
+                        success: function(response) {
+                            swal({
+                                type: 'warning',
+                                title: 'Cliente já cadastrado.',
+                                text: 'Um cliente com nome: ' + response.name + ' foi encontrado com este CPF.',
+                                confirmButtonText: 'Continuar',
+                                showCancelButton: true,
+                                cancelButtonText: 'Cancelar'
+                            }).then((result) => {
+                                if (result.value) {
+                                    window.location.href = "{{route('simulacao_tipo')}}/"+$('input[name=operation]').val()+"/"+response.id;
+                                } else {
+                                    ele.val('');
+                                };
+                            });
+                        },
+                        error: function() {
+
+                        }
+                    });
+                }
+            });
 		})();
     </script>
 @endsection
