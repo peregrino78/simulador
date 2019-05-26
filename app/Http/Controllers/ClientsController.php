@@ -76,4 +76,21 @@ class ClientsController extends Controller
             return $this->operation->redirectOperation($request->operation, $client->id);
         }
     }
+
+    public function redirect(Request $request)
+    {
+        return $this->operation->redirectOperation($request->operation, $request->id);
+    }
+
+    public function check(Request $request)
+    {
+        $client = Client::select('id', 'name')->where('cpf', $request->cpf)->first();
+            
+        if($client)
+        {
+            return json_encode($client);
+        }
+
+        return false;
+    }
 }
