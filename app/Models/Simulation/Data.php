@@ -13,7 +13,7 @@ class Data extends Model
      *
      * @var array
      */
-    protected $fillable = ['balance_due', 'contract_term', 'paid_parcels', 'open_parcels', 'current_parcel_value',
+    protected $fillable = ['parcels_quantity', 'value_desired', 'balance_due', 'contract_term', 'paid_parcels', 'open_parcels', 'current_parcel_value',
     'desired_parcel', 'date', 'client_id', 'operation_type_id', 'agreement_id'];
 
     protected $dates = ['date'];
