@@ -23,7 +23,7 @@ class RefinancingPortabilityController extends Controller
         return view('dashboard.operations.refin-portabilidade.create', compact('agreements', 'operations', 'client_id'));
     }
 
-     /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -38,7 +38,6 @@ class RefinancingPortabilityController extends Controller
             'open_parcels'          => 'required',
             'current_parcel_value'  => 'required',
             'desired_parcel'        => 'required',
-            'date'                  => 'required',
             'agreement_id'          => 'required'
         ];
 

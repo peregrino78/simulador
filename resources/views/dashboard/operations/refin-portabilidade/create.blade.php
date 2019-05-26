@@ -4,11 +4,11 @@
 
 @section('content')
 
-{!! Form::open(['route' => 'refin-portabilidade.store', 'method' => 'post', 'class'=>'form-horizontal', 'role'=>'form', 'files' => true]) !!}
+{!! Form::open(['route'=>'refin-portabilidade.store', 'method'=>'post', 'class'=>'form-horizontal', 'role'=>'form', 'files' => true]) !!}
 <div class="row">
     <div class="col-sm-12">
         <div class="card-box">
-              <div class="tab-content">
+            <div class="tab-content">
                 <div class="tab-pane active show" id="info-b2">
                     <div class="row">
                         <div class="col-lg-12">
@@ -25,7 +25,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fa fa-file-text-o"></i></span>
                                                     </div>
-                                                    {{ Form::select('operation_type_id', $operations, 4, ['class' => 'form-control', 'disabled' => 'disabled']) }}
+                                                    {{ Form::select('operation_type_id', $operations, 4, ['class' => 'form-control', 'readonly']) }}
                                                 </div>
                                                 @if ($errors->has('operation_type_id'))
                                                     <span class="help-block">
@@ -142,22 +142,6 @@
                                                 @if ($errors->has('desired_parcel'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('desired_parcel') }}</strong>
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group {{ $errors->has('date') ? ' has-error' : '' }}">
-                                                <label class="col-form-label" for="date">Data</label>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                                    </div>
-                                                    {{ Form::date('date', null, ['class' => 'form-control', 'placeholder' => '00/00/0000']) }}
-                                                </div>
-                                                @if ($errors->has('date'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('date') }}</strong>
                                                     </span>
                                                 @endif
                                             </div>
