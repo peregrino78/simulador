@@ -6,6 +6,7 @@ use App\Models\Agreement;
 use App\Models\Coefficient;
 use Illuminate\Http\Request;
 use App\Models\OperationType;
+use DB;
 
 class CoefficientsController extends Controller
 {
@@ -173,5 +174,15 @@ class CoefficientsController extends Controller
                 'message' => $e->getMessage()
             ]);
         }
+    }
+
+    public function getByDate()
+    {
+        // busca a taxa de acordo com a data mais próxima passando a data atual
+        return $coefficients = Coefficient::where('term', $contractTerm)
+        ->where('agreement_id', $agreement)
+        ->where('operation_type_id', $operation)
+        ->orderBy(DB::raw('ABS(DATEDIFF(coefficients.date, NOW()))'))
+        ->first();
     }
 }
