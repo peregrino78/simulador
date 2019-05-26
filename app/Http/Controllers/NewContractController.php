@@ -30,26 +30,35 @@ class NewContractController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $rules = [
-            'balance_due'           => 'required',
-            'contract_term'         => 'required',
-            'paid_parcels'          => 'required',
-            'open_parcels'          => 'required',
-            'current_parcel_value'  => 'required',
-            'desired_parcel'        => 'required',
-            'date'                  => 'required',
+    {       
+        $rules = [];
+
+        //Se operação for Valor da Parcela
+        if($request->operation == 1)
+        {
+            $rules += [
+                'value_desired'     => 'required',
+            ];
+        }
+
+        //Se operação dor Valor do Empréstimo
+        if($request->operation == 2)
+        {
+            $rules += [
+                'desired_parcel'    => 'required',
+            ];
+        }
+        
+
+        $rules += [    
+            'parcels_quantity'      => 'required',
             'agreement_id'          => 'required'
         ];
 
         $nicenames = [
-            'balance_due'           => 'Saldo Devedor',
-            'contract_term'         => 'Prazo Contratado',
-            'paid_parcels'          => 'Parcelas Pagas',
-            'open_parcels'          => 'Parcelas Abertas',
-            'current_parcel_value'  => 'Valor Parcela Atual',
+            'value_desired'         => 'Valor Desejado',
             'desired_parcel'        => 'Valor Parcela Desejada',
-            'date'                  => 'Data',
+            'parcels_quantity'      => 'Quantidade de Parcelas',
             'agreement_id'          => 'Convênio'
         ];
 
