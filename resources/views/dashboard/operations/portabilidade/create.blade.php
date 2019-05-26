@@ -25,7 +25,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fa fa-file-text-o"></i></span>
                                                     </div>
-                                                    {{ Form::select('operation_type_id', $operations, 2, ['class' => 'form-control', 'disabled' => 'disabled']) }}
+                                                    {{ Form::select('operation_type_id', $operations, 2, ['class' => 'form-control', 'readonly' => 'true']) }}
                                                 </div>
                                                 @if ($errors->has('operation_type_id'))
                                                     <span class="help-block">
